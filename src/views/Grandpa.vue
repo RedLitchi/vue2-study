@@ -3,7 +3,7 @@
         <h1>大娃爷爷</h1>
         <button @click="sendFather">给大娃的爹发消息</button>&nbsp;&nbsp;
         <button @click="sendUncle">给大娃的叔叔发消息</button>&nbsp;&nbsp;
-        <button @click="sendGrandDaWa">给大娃发消息</button><br/><br/>
+        <button @click="sendDaWa">给大娃发消息</button><br/><br/>
         <h5>[消息总线]来自{{busMessage.name}}的消息:{{ busMessage.val }}</h5><br/><br/>
         <div style="display: flow-root;">
             <Father/>
@@ -31,8 +31,8 @@ export default {
         sendUncle(){
             this.$eventBus.$emit("grandpaSendUncle", {name:"大娃的爷爷", val:`老二呀,为父给你寄了${parseInt(Math.random() * 100)}斤土特产,记得去拿`});
         },
-        sendGrandDaWa(){
-            this.$eventBus.$emit("grandpaSendGrandDaWa", {name:"大娃的爷爷", val:`乖孙呀,爷爷给你转了${parseInt(Math.random() * 100)}块钱,天热买点水喝`});
+        sendDaWa(){
+            this.$eventBus.$emit("grandpaSendDaWa", {name:"大娃的爷爷", val:`乖孙呀,爷爷给你转了${parseInt(Math.random() * 100)}块钱,天热买点水喝`});
         }
     },
     mounted() {

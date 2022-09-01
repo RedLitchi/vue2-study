@@ -26,7 +26,7 @@ export default {
             this.$eventBus.$emit("daWaSendUncle", {name:"大娃", val:`谢谢叔叔关心，我高考考了全国第${parseInt(Math.random() * 10)}名`});}
     },
     mounted() {
-        this.$eventBus.$on("grandpaSendGrandDaWa", msg=>{
+        this.$eventBus.$on("grandpaSendDaWa", msg=>{
             this.busMessage = msg;
         });
         this.$eventBus.$on("fatherSendDaWa", msg=>{
