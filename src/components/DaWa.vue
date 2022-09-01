@@ -10,13 +10,9 @@
 </template>
 <script>
 export default {
-    props: {
-        message: Object
-    },
     data(){
         return{
-            busMessage:{},
-            vuexMessage:{}
+            busMessage:{}
         }
     },
     methods:{
