@@ -10,6 +10,10 @@
 </template>
 <script>
 export default {
+    props:{
+        grandpaSendDaWa:Object,
+        fatherSendDaWa:Object
+    },
     data(){
         return{
             propsMessage:{}
@@ -17,24 +21,21 @@ export default {
     },
     methods:{
         sendGrandpa(){
-            this.$eventBus.$emit("daWaSendGrandpa", {name:'大娃', val:`爷爷,我高考考了全国第${parseInt(Math.random() * 100)}名`});
+            this.$emit("daWaSendGrandpa", {name:'大娃', val:`爷爷,我高考考了全国第${parseInt(Math.random() * 100)}名`});
         },
         sendFather(){
-            this.$eventBus.$emit("daWaSendFather", {name:"大娃", val:`好的，那到时候我等你${parseInt(Math.random() * 10)}个小时,到时候你来不了我自己回去也行`});
+            this.$emit("daWaSendFather", {name:"大娃", val:`好的，那到时候我等你${parseInt(Math.random() * 10)}个小时,到时候你来不了我自己回去也行`});
         },
         sendUncle(){
-            this.$eventBus.$emit("daWaSendUncle", {name:"大娃", val:`谢谢叔叔关心，我高考考了全国第${parseInt(Math.random() * 10)}名`});}
+            this.$emit("daWaSendUncle", {name:"大娃", val:`谢谢叔叔关心，我高考考了全国第${parseInt(Math.random() * 10)}名`});}
     },
-    mounted() {
-        this.$eventBus.$on("grandpaSendGrandDaWa", msg=>{
-            this.busMessage = msg;
-        });
-        this.$eventBus.$on("fatherSendDaWa", msg=>{
-            this.busMessage = msg;
-        });
-        this.$eventBus.$on("uncleSendDaWa", msg=>{
-            this.busMessage = msg;
-        });
+    watch:{
+        grandpaSendDaWa(){
+            this.propsMessage = this.grandpaSendDaWa;
+        },
+        fatherSendDaWa(){
+            this.propsMessage = this.fatherSendDaWa;
+        }
     }
 }
 </script>
