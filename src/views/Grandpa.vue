@@ -1,13 +1,13 @@
 <template>
     <div class="home">
-        <h1>父组件</h1>
-        <button @click="sendFather">给大儿子发消息</button>&nbsp;&nbsp;
-        <button @click="sendUncle">给二儿子发消息</button>&nbsp;&nbsp;
-        <button @click="sendGrandSon">给孙子发消息</button><br/><br/>
+        <h1>大娃爷爷</h1>
+        <button @click="sendFather">给大娃的爹发消息</button>&nbsp;&nbsp;
+        <button @click="sendUncle">给大娃的叔叔发消息</button>&nbsp;&nbsp;
+        <button @click="sendGrandDaWa">给大娃发消息</button><br/><br/>
         <h5>[消息总线]来自{{busMessage.name}}的消息:{{ busMessage.val }}</h5><br/><br/>
         <div style="display: flow-root;">
-            <Father :message="grandpaSendFather" @fatherSendGrandpa="receive"/>
-            <Uncle :message="grandpaSendFatherUncle" @uncleSendGrandpa="receive"/>
+            <Father/>
+            <Uncle/>
         </div>
     </div>
 </template>
@@ -21,29 +21,28 @@ export default {
     },
     data(){
         return{
-            grandpaSendFather:{},//发给大儿子
-            grandpaSendFatherUncle:{},//发给二儿子
-            propsMessage:{},
-            busMessage:{},
-            vuexMessage:{}
+            busMessage:{}
         }
     },
     methods:{
         sendFather(){
-            this.grandpaSendFather = {name:"大娃的爷爷", val:`在外面注意身体，我给你寄了${parseInt(Math.random() * 100)}斤家乡土特产，记得收！`};
+            this.$eventBus.$emit("grandpaSendFather", {name:"大娃的爷爷", val:`好大儿,为父给你寄了${parseInt(Math.random() * 100)}斤土特产,记得收!`});
         },
         sendUncle(){
-            this.$eventBus.$emit("sendUncle", {name:"大娃的爷爷", val:`乖孙呀,爷爷给你转了${parseInt(Math.random() * 100)}块钱,天热买点水喝`});
+            this.$eventBus.$emit("grandpaSendUncle", {name:"大娃的爷爷", val:`老二呀,为父给你寄了${parseInt(Math.random() * 100)}斤土特产,记得去拿`});
         },
-        sendGrandSon(){
-            this.$eventBus.$emit("sendGrandSon", {name:"大娃的爷爷", val:`乖孙呀,爷爷给你转了${parseInt(Math.random() * 100)}块钱,天热买点水喝`});
-        },
-        receive(val){
-            this.propsMessage = val;
+        sendGrandDaWa(){
+            this.$eventBus.$emit("grandpaSendGrandDaWa", {name:"大娃的爷爷", val:`乖孙呀,爷爷给你转了${parseInt(Math.random() * 100)}块钱,天热买点水喝`});
         }
     },
     mounted() {
-        this.$eventBus.$on('sendGrandpa', (message) => {
+        this.$eventBus.$on('fatherSendGrandpa', (message) => {
+            this.busMessage = message;
+        })
+        this.$eventBus.$on('uncleSendGrandpa', (message) => {
+            this.busMessage = message;
+        })
+        this.$eventBus.$on('daWaSendGrandpa', (message) => {
             this.busMessage = message;
         })
     }
@@ -52,6 +51,7 @@ export default {
 <style scoped>
 .home{
     background: wheat;
-    height: auto;
+    height: 100vh;
+    width: 100vw;
 }
 </style>
