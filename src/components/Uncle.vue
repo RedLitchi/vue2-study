@@ -5,14 +5,14 @@
         <button @click="sendGrandpa">给大娃爷爷发消息</button>&nbsp;&nbsp;
         <button @click="sendFather">给大娃爹发消息</button>&nbsp;&nbsp;
         <button @click="sendDaWa">给大娃发消息</button><br/><br/>
-        <h5>[消息总线]来自{{busMessage.name}}的消息:{{ busMessage.val }}</h5><br/><br/>
+        <h5>[Props]来自{{propsMessage.name}}的消息:{{ propsMessage.val }}</h5><br/><br/>
     </div>
 </template>
 <script>
 export default {
     data(){
         return{
-            busMessage:{}
+            propsMessage:{}
         }
     },
     methods:{
