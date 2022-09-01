@@ -1,48 +1,45 @@
 <template>
     <div class="hello">
-        <h3>叔叔，爷爷的二儿子！</h3>
-        <hr/>
-        <button @click="sendGrandpa">给父亲发消息</button>&nbsp;&nbsp;
-        <button @click="sendFather">给大哥发消息</button>&nbsp;&nbsp;
-        <button @click="sendNephew">给侄子发消息</button><br/><br/>
-        <h5>[Props]来自{{message.name}}的消息:{{ message.val }}</h5><br/><br/>
-        <h5>[消息总线]来自{{busMessage.name}}的消息:{{ busMessage.val }}</h5><br/><br/>
-        <h5>[Vuex]来自{{vuexMessage.name}}的消息:{{ vuexMessage.val }}</h5><br/><br/>
+        <h1>大娃的叔叔，大娃爷爷的二儿子！</h1>
+        <hr/><br/>
+        <button @click="sendGrandpa">给大娃爷爷发消息</button>&nbsp;&nbsp;
+        <button @click="sendFather">给大娃爹发消息</button>&nbsp;&nbsp;
+        <button @click="sendDaWa">给大娃发消息</button><br/><br/>
+        <h5>[Props]来自{{propsMessage.name}}的消息:{{ propsMessage.val }}</h5><br/><br/>
     </div>
 </template>
 <script>
 export default {
-    props: {
-        message: Object
+    props:{
+        grandpaSendUncle:Object
     },
     data(){
         return{
-            busMessage:{},
-            vuexMessage:{}
+            propsMessage:{}
         }
     },
     methods:{
         sendGrandpa(){
-            this.$emit("uncleSendGrandpa", {name:"二儿子", val:`好的，我知道了，你在家注意身体呀，我给你打了${parseInt(Math.random() * 1000)}块钱，你查一下收到没？`});
+            this.$emit("uncleSendGrandpa", {name:"大娃的叔叔", val:`好的,天冷了我给你买了${parseInt(Math.random() * 10)}件衣服,应该这几天就到了`});
         },
         sendFather(){
-            this.$eventBus.$emit("sendFather", {name:"二弟", val:`不用不用，娃他爷给我寄了${parseInt(Math.random() * 100)}斤土特产，你要不？`});
+            this.$emit("uncleSendFather", {name:"大娃的叔叔", val:`父亲给我寄了${parseInt(Math.random() * 100)}斤土特产，你要不要？`});
         },
-        sendNephew(){
-            this.$eventBus.$emit("sendNephew", {name:"叔叔", val:`高考成绩出来了,全国前${parseInt(Math.random() * 100)}名有信心不？`});
+        sendDaWa(){
+            this.$emit("uncleSendDaWa", {name:"大娃的叔叔", val:`大娃,高考全国前${parseInt(Math.random() * 100)}名有信心没？`});
         }
     },
-    created() {
-        this.$eventBus.$on('uncleSendGrandpa', (msg) => {
-            this.busMessage = msg
-        })
+    watch:{
+        grandpaSendUncle(){
+            this.propsMessage = this.grandpaSendUncle;
+        }
     }
 }
 </script>
 <style scoped>
 .hello{
     width: 600px;
-    height: 300px;
+    height: 400px;
     background: salmon;
     float: right;
 }
