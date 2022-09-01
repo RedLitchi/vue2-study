@@ -1,6 +1,7 @@
 <template>
     <div class="home">
         <h1>大娃爷爷</h1>
+        <hr/><br/>
         <button @click="sendFather">给大娃的爹发消息</button>&nbsp;&nbsp;
         <button @click="sendUncle">给大娃的叔叔发消息</button>&nbsp;&nbsp;
         <button @click="sendDaWa">给大娃发消息</button><br/><br/>
