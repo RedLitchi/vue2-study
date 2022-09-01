@@ -1,7 +1,7 @@
 <template>
     <div class="hello">
-        <h3>大娃的叔叔，大娃爷爷的二儿子！</h3>
-        <hr/>
+        <h1>大娃的叔叔，大娃爷爷的二儿子！</h1>
+        <hr/><br/>
         <button @click="sendGrandpa">给大娃爷爷发消息</button>&nbsp;&nbsp;
         <button @click="sendFather">给大娃爹发消息</button>&nbsp;&nbsp;
         <button @click="sendDaWa">给大娃发消息</button><br/><br/>
@@ -35,7 +35,7 @@ export default {
 <style scoped>
 .hello{
     width: 600px;
-    height: 300px;
+    height: 400px;
     background: salmon;
     float: right;
 }

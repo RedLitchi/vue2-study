@@ -1,7 +1,7 @@
 <template>
     <div class="c">
         <h1>大娃</h1>
-        <hr/>
+        <hr/><br/>
         <button @click="sendGrandpa">给爷爷发消息</button>&nbsp;&nbsp;
         <button @click="sendFather">给父亲发消息</button>&nbsp;&nbsp;
         <button @click="sendUncle">给叔叔发消息</button><br/><br/>
@@ -32,7 +32,8 @@ export default {
 <style scoped>
 .c{
     width: 300px;
-    height: 300px;
+    height: auto;
+    margin: 0 auto;
     background: rgb(107, 157, 195);
 }
 </style>
