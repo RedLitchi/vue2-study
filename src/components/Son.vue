@@ -5,9 +5,7 @@
         <button @click="sendGrandpa">给爷爷发消息</button>&nbsp;&nbsp;
         <button @click="sonSendFather">给父亲发消息</button>&nbsp;&nbsp;
         <button @click="sendUncle">给叔叔发消息</button><br/><br/>
-        <h5>[Props]来自{{message.name}}的消息:{{ message.val }}</h5><br/><br/>
         <h5>[消息总线]来自{{busMessage.name}}的消息:{{ busMessage.val }}</h5><br/><br/>
-        <h5>[Vuex]来自{{vuexMessage.name}}的消息:{{ vuexMessage.val }}</h5><br/><br/>
     </div>
 </template>
 <script>
